@@ -3,6 +3,7 @@ namespace MaquinaInferencia
     public partial class Form1 : Form
     {
         int cont = 0;
+         int total = 0;
         public Form1()
         {
             InitializeComponent();
@@ -21,48 +22,67 @@ namespace MaquinaInferencia
 
         public void sintomas()
         {
-            DialogResult q1 = MessageBox.Show("Al realizar alguna actividad física, ¿te agitas más de lo normal?", "Diagnóstico",
+            DialogResult q1 = MessageBox.Show("Al realizar alguna actividad fï¿½sica, ï¿½te agitas mï¿½s de lo normal?", "Diagnï¿½stico",
                             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (q1 == DialogResult.Yes)
             {
                 cont++;
+            }else{
+                total=cont;;
             }
-            DialogResult q2 = MessageBox.Show("Al inhalar, ¿sientes alguna dificultad para respirar?", "Diagnóstico",
+            DialogResult q2 = MessageBox.Show("Al inhalar, ï¿½sientes alguna dificultad para respirar?", "Diagnï¿½stico",
                             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (q2 == DialogResult.Yes)
+            if (q2 == DialogResult.Yes){
                 cont++;
-
-            DialogResult q3 = MessageBox.Show("¿Dificultad al respirar en algunas épocas del año o en contacto con animales, plantas, tabaco o en su trabajo ? ", "Diagnóstico",
+            }else{
+                total = cont;
+            }
+            DialogResult q3 = MessageBox.Show("ï¿½Dificultad al respirar en algunas ï¿½pocas del aï¿½o o en contacto con animales, plantas, tabaco o en su trabajo ? ", "Diagnï¿½stico",
                             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (q3 == DialogResult.Yes)
+            if (q3 == DialogResult.Yes){
                 cont+=2;
-
-            DialogResult q4 = MessageBox.Show("¿Ha tenido tos, “silvidos”, dificultad al respirar después de hacer ejercicios moderados o intensos ? ", "Diagnóstico",
+            }else{
+                total=cont;
+            }
+            DialogResult q4 = MessageBox.Show("ï¿½Ha tenido tos, ï¿½silvidosï¿½, dificultad al respirar despuï¿½s de hacer ejercicios moderados o intensos ? ", "Diagnï¿½stico",
                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (q4 == DialogResult.Yes)
+            if (q4 == DialogResult.Yes){
                 cont+=2;
-
-            DialogResult q5 = MessageBox.Show(" ¿Ha padecido resfriados que le duren más de 10 días o siente una oprecion en el pecho?", "Diagnóstico",
+            }else
+            {
+                total=cont;
+            }
+            DialogResult q5 = MessageBox.Show(" ï¿½Ha padecido resfriados que le duren mï¿½s de 10 dï¿½as o siente una oprecion en el pecho?", "Diagnï¿½stico",
                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (q5 == DialogResult.Yes)
+            if (q5 == DialogResult.Yes){
                 cont+=3;
-
-            DialogResult q6 = MessageBox.Show("¿Ha utilizado medicamentos inhalados que le alivian o que le bajan estos síntomas ? ", "Diagnóstico",
+            }else{
+                total=cont;
+            }
+            DialogResult q6 = MessageBox.Show("ï¿½Ha utilizado medicamentos inhalados que le alivian o que le bajan estos sï¿½ntomas ? ", "Diagnï¿½stico",
                           MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (q6 == DialogResult.Yes)
+            if (q6 == DialogResult.Yes){
                 cont++;
-
-            DialogResult q7 = MessageBox.Show("Mientras estás durmiendo, ¿te despiertas varias veces tosiendo o agitado?", "Diagnóstico",
+            }else{
+                total=cont;
+            }
+            DialogResult q7 = MessageBox.Show("Mientras estï¿½s durmiendo, ï¿½te despiertas varias veces tosiendo o agitado?", "Diagnï¿½stico",
                           MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(q7 == DialogResult.Yes)
+            if(q7 == DialogResult.Yes){
                 cont++;
-            
-            DialogResult q8 = MessageBox.Show("Cuando se complica la enfermedad, ¿requieres neubolizaciones para estabilizarte?", "Diagnóstico",
+            }else{
+                total=cont;
+            }
+            DialogResult q8 = MessageBox.Show("Cuando se complica la enfermedad, ï¿½requieres neubolizaciones para estabilizarte?", "Diagnï¿½stico",
                           MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (q8 == DialogResult.Yes)
+            if (q8 == DialogResult.Yes){
                 cont+=5;
-
-            calcular(cont);
+                total=cont;
+            }else
+            {
+                total=cont;
+            }
+            calcular(total);
         }
 
         public void calcular(int valor)
@@ -70,7 +90,7 @@ namespace MaquinaInferencia
             if (valor == 0)
                 MessageBox.Show("No se detecto indicios de asma");
 
-            if (valor >= 0 && valor <= 9)
+            if (valor > 0 && valor <= 9)
                 MessageBox.Show("Es muy probable que tengas asma, ve a una consulta con tu medico general");
 
             if (valor > 9)
